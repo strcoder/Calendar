@@ -24,12 +24,12 @@ if (!id || !token) {
 }
 
 if (id && token) {
-  fetch(`http://localhost:8000/api/user/${id}`, { method: 'get' })
+  fetch(`https://crea-api.vercel.app/api/user/${id}`, { method: 'get' })
   .then(response => response.json())
   .then(({ data }) => {
     // console.log(data);
     const user = data;
-    fetch(`http://localhost:8000/api/team/${user.team[0]}`, { method: 'get' })
+    fetch(`https://crea-api.vercel.app/api/team/${user.team[0]}`, { method: 'get' })
     .then(response => response.json())
     .then(({ data }) => {
       ReactDOM.render(
