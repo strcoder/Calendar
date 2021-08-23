@@ -20,7 +20,10 @@ const App = () => {
       <BrowserRouter>
         <Layout>
           <Switch>
-            <Route exact path={['/', '/home']} component={HomeManager} />
+            <Route exact path={['/', '/home']} component={Home} />
+            <Route exact path='/team' component={Team} />
+            <Route exact path='/schedule' component={Weekend} />
+            <Route exact path='/meetings' component={Meetings} />
             <Route component={NotFound} />
           </Switch>
         </Layout>
