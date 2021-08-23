@@ -42,11 +42,16 @@ const Home = () => {
             <p><strong>{fullDate}</strong></p>
           </div>
           <div className='Home__team--body'>
-            <p>Este es tu equipo</p>
-            <p>{`Miembros: ${team?.members?.length}`}</p>
-            <p>{`Equipo: ${team?.name}`}</p>
-            <p>{`Manager: ${team?.manager?.name}`}</p>
+            <p><strong>Este es tu equipo:</strong></p>
             <p>{`Reuniones: ${meetingsLists?.length || 0}`}</p>
+            <p>{`Miembros: ${team?.members?.length}`}</p>
+            <p>{`Manager: ${team?.manager?.name}`}</p>
+            <p>{`Equipo: ${team?.name}`}</p>
+            {user._id === team.manager._id && (
+              <Link to='/team' className='btn-link-accent justify-self-end'>
+                Crear reunión
+              </Link>
+            )}
           </div>
         </div>
         <div className='Home__meetings'>

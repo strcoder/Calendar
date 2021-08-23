@@ -29,6 +29,7 @@ type ContextInterface = {
   theme?: 'light' | 'dark';
   dispatch: React.Dispatch<any>;
   team?: {
+    _id: string;
     name: string;
     manager: User;
     members: User[];

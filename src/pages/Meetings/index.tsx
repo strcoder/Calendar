@@ -7,7 +7,7 @@ import TextField from '../../components/form/TextField';
 import Modal from '../../components/Modal';
 import { useStateValue } from '../../context';
 import './styles.scss';
-import { scheduleMeeting, updateSchedule } from '../../context/actions';
+import { scheduleMeeting, scheduleTeamMeeting, updateSchedule } from '../../context/actions';
 
 const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
 const months = ['Enero', 'Febreo', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
@@ -18,6 +18,7 @@ const Meetings = () => {
   const [selected, setSelected] = useState<any>();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(false);
+  const [teamMeeting, setTeamMeeting] = useState(false);
   // const [success, setSuccess] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -77,6 +78,23 @@ const Meetings = () => {
         partnerSchedule: partner.schedule,
       }
     });
+    if (!result) {
+      setError(true);
+    } else {
+      setShowModal(false);
+      setShowDeleteModal(false);
+    }
+  }
+
+  const handelDeleteTeamMeeting = async () => {
+    const meeting = team.meetings.map((meet) => {
+      if (meet.day.includes(selected.day)) {
+        const index = meet.list.indexOf(selected.info);
+        meet.list.splice(index, 1);
+      }
+      return meet;
+    });
+    const result = await scheduleTeamMeeting({ teamId: team._id, meetings: meeting, dispatch });
     if (!result) {
       setError(true);
     } else {
@@ -175,13 +193,30 @@ const Meetings = () => {
             )}
           </div>
           <div className='flex justify-self-end'>
-            <button
-              type='button'
-              onClick={() => setShowDeleteModal(true)}
-              className='btn-link-danger justify-self-end'
-            >
-              Cancelar reunión
-            </button>
+            {user._id === team.manager._id && !selected?.info?.time && !selected?.info?.user && (
+              <button
+                type='button'
+                onClick={() => {
+                  setTeamMeeting(true);
+                  setShowDeleteModal(true);
+                }}
+                className='btn-link-danger justify-self-end'
+              >
+                Cancelar reunión
+              </button>
+            )}
+            {selected?.info?.time && selected?.info?.user && (
+              <button
+                type='button'
+                onClick={() => {
+                  setTeamMeeting(false);
+                  setShowDeleteModal(true);
+                }}
+                className='btn-link-danger justify-self-end'
+              >
+                Cancelar reunión
+              </button>
+            )}
             <button
               type='button'
               onClick={() => setShowModal(false)}
@@ -212,7 +247,9 @@ const Meetings = () => {
           <button
             type='button'
             className='btn-danger'
-            onClick={() => handelDelete()}
+            onClick={() => {
+              teamMeeting ? handelDeleteTeamMeeting() : handelDelete()
+            }}
           >
             Eliminar
           </button>

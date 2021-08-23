@@ -17,12 +17,11 @@ const Header = () => {
   const [error, setError] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const onSubmit = (data) => {
-    loginUser({ email: data.email, password: data.password, dispatch }).then((result) => {
-      if (!result) {
-        setError(true);
-      }
-    });
+  const onSubmit = async (data) => {
+    const result = await loginUser({ email: data.email, password: data.password, dispatch });
+    if (!result) {
+      setError(true);
+    }
   }
 
   return (
@@ -47,7 +46,7 @@ const Header = () => {
         <>
           <nav className={`Header__nav flex items-center ${menuOpen}`}>
             <NavLink exact to='/schedule' className='btn-link single-line' activeClassName='active'>
-              Mi semana
+              Mi horarios
             </NavLink>
             <NavLink exact to='/team' className='btn-link' activeClassName='active'>
               Equipo

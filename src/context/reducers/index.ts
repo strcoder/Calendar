@@ -22,6 +22,12 @@ const reducer = (state: any, payload: any) => {
         user: payload.user,
       };
     }
+    case 'SET_TEAM': {
+      return {
+        ...state,
+        team: payload.team,
+      };
+    }
     case 'SET_ERROR': return state;
     default: return state;
   }
