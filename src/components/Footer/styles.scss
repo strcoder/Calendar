@@ -1,10 +1,11 @@
 @import '../../sass/utils/variables';
 
 .Footer {
+  left: 0;
   bottom: 0;
   width: 100%;
   display: flex;
-  position: absolute;
+  position: fixed;
   align-items: center;
   justify-content: flex-end;
   background-color: $gray-200;
