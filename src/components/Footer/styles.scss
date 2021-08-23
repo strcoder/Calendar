@@ -1,0 +1,16 @@
+@import '../../sass/utils/variables';
+
+.Footer {
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: $gray-200;
+  border: $border-width solid $border-color;
+  & p {
+    display: flex;
+    align-items: center;
+  }
+}
