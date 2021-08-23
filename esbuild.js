@@ -6,6 +6,6 @@ esbuild.build({
   bundle: true,
   target: 'es6',
   plugins: [sassPlugin()],
-  outfile: 'public/app.js',
+  outfile: 'dist/app.js',
   entryPoints: ['src/index.tsx'],
 }).catch((e) => console.error(e.message));
