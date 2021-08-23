@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://crea-api.vercel.app';
 
 export const setError = (error: any) => ({
   type: 'SET_THEME',
