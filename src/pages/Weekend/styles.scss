@@ -1,0 +1,123 @@
+@import '../../sass/utils/variables';
+
+.Weekend {
+  gap: 25px;
+  padding: 20px;
+  & .form-control {
+    padding: 25px 0;
+  }
+}
+
+.FreeHours {
+  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.FreeHours__list {
+  gap: 20px;
+  display: grid;
+}
+
+.FreeHourModal {
+  gap: 20px;
+  padding: 20px 0;
+  & .text-field {
+    min-width: 230px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .FreeHourModal {
+    & .text-field {
+      min-width: 285px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .Weekend {
+    padding: 20px 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Weekend {
+    padding: 20px 20%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .Weekend {
+    padding: 50px 20%;
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////
+
+.FreeHourCard {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  background-color: $gray-200;
+  border-radius: $border-radius;
+  justify-content: space-between;
+  border: $border-width solid $border-color;
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+.DaysCard {
+  align-content: flex-start;
+  padding: 20px;
+  // overflow: auto;
+  // max-width: 300px;
+  // max-height: 300px;
+  background-color: $white;
+  box-shadow: $box-shadow-sm;
+  border-radius: $border-radius;
+  border: $border-width solid $border-color;
+}
+
+.DaysCard__header {
+  display: flex;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  & button {
+    padding: 0;
+  }
+}
+
+.DaysCard__body {
+  gap: 10px;
+  height: 200px;
+  overflow: auto;
+  align-content: flex-start;
+  &.empty {
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    background-color: $gray-200;
+    border-radius: $border-radius;
+  }
+  &.empty p {
+    padding: 20px;
+    color: $gray-700;
+    font-weight: bold;
+    text-align: center;
+  }
+  &.empty p, figure {
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+  & figure {
+    padding: 20px;
+    align-self: center;
+    justify-self: center;
+  }
+  & figure img {
+    opacity: 0.2;
+  }
+}

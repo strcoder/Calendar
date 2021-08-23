@@ -1,0 +1,81 @@
+@import '../../sass/utils/variables';
+
+.TeamCard {
+  max-width: 400px;
+  background-color: white;
+  align-content: flex-start;
+  box-shadow: $box-shadow-sm;
+  border-radius: $border-radius;
+  border: $border-width solid $border-color;
+}
+
+.TeamCard__header {
+  padding: 10px;
+  background-color: $gray-200;
+  border-radius: $border-radius;
+  border: $border-width solid $border-color;
+}
+
+.TeamCard__body {
+  padding: 10px 20px;
+}
+
+.TeamCard__footer {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TeamCard__modal {
+  width: 240px;
+  overflow: auto;
+}
+
+.TeamCard__modal--header {
+  & p.color-success {
+    font-weight: bold;
+    font-size: $font-size-lg;
+  }
+}
+
+.TeamCard__modal--body {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 500px;
+  align-content: flex-start;
+}
+
+.TeamCard__modal .Meetings__list--item {
+  padding: 0;
+  background: none;
+  justify-content: initial;
+  &.active {
+    border: 2px solid $secondary-color;
+    box-shadow: 0 0 0 0.2em rgba($secondary-color, 0.5);
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .TeamCard__modal {
+    width: 280px;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .TeamCard__modal {
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .TeamCard__modal {
+    width: 560px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .TeamCard__modal {
+    width: 810px;
+  }
+}

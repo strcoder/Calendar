@@ -1,0 +1,31 @@
+@import '../../sass/utils/variables';
+
+.Team {
+  gap: 8px;
+  padding: 25px;
+}
+
+.Team__list {
+  gap: 25px;
+  padding-top: 20px;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media screen and (min-width: 768px) {
+  .Team {
+    padding: 25px 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Team {
+    padding: 25px 20%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .Team {
+    padding: 50px 20%;
+  }
+}
