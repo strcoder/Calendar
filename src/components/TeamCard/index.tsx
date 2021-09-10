@@ -13,21 +13,6 @@ const TeamCard = ({ user, role }) => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const meetingsLists = schedule.map((item) => item.list).flat();
-  // const schedule = [
-  //   {
-  //     day: 'Lunes',
-  //     list: ['14:00'],
-  //   },
-  //   {
-  //     day: 'Martes',
-  //     list: ['9:20'],
-  //   },
-  //   {
-  //     day: 'Miercoles',
-  //     list: ['9:20'],
-  //   },
-  // ];
-  // console.log(schedule);
 
   const handleScheduleMeeting = async () => {
     const userMeetings = key?.meetings?.map((item) => {
@@ -93,7 +78,10 @@ const TeamCard = ({ user, role }) => {
       </div>
       <div className='TeamCard__body'>
         <figure>
-          <img src='/assets/avatar-female.svg' alt='Avatar' />
+          <img
+            alt='Avatar'
+            src={user?.lastname.includes('Amiga') ? '/assets/avatar-female.svg' : '/assets/avatar-male.svg'}
+          />
         </figure>
       </div>
       {key._id !== user._id && (

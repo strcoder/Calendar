@@ -27,7 +27,7 @@ if (id && token) {
   fetch(`https://crea-api.vercel.app/api/user/${id}`, { method: 'get' })
   .then(response => response.json())
   .then(({ data }) => {
-    // console.log(data);
+    console.log(data);
     const user = data;
     fetch(`https://crea-api.vercel.app/api/team/${user.team[0]}`, { method: 'get' })
     .then(response => response.json())

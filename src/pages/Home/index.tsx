@@ -27,7 +27,7 @@ const Home = () => {
     };
   });
 
-  const meetingsLists = meetings.map((item) => item.list).flat();
+  const meetingsLists = meetings?.map((item) => item.list).flat();
 
   return (
     <section className='Home'>
@@ -47,7 +47,7 @@ const Home = () => {
             <p>{`Miembros: ${team?.members?.length}`}</p>
             <p>{`Manager: ${team?.manager?.name}`}</p>
             <p>{`Equipo: ${team?.name}`}</p>
-            {user._id === team.manager._id && (
+            {user?._id === team.manager?._id && (
               <Link to='/team' className='btn-link-accent justify-self-end'>
                 Crear reunión
               </Link>
@@ -59,7 +59,7 @@ const Home = () => {
             <p><strong>Proximas reuniones</strong></p>
           </div>
           <div className='Home__meetings--body'>
-            {meetingsLists.length <= 0 && (
+            {meetingsLists?.length <= 0 && (
               <div className='Meetings empty'>
                 <p>No hay reuniones</p>
                 <p>Puedes ir modificando tus horas de reuniones</p>
@@ -68,7 +68,7 @@ const Home = () => {
                 </Link>
               </div>
             )}
-            {meetings.map((meeting) => meeting.list.length > 0 && (
+            {meetings?.map((meeting) => meeting?.list?.length > 0 && (
               <div key={meeting.day} className='Meetings'>
                 <p><strong>{meeting.day}</strong></p>
                 <div className='Meetings__list'>

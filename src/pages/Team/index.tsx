@@ -44,15 +44,12 @@ const Team = () => {
   }
 
   const handleTeamMeeting = async () => {
-    // console.log(selected);
     const meeting = team.meetings.map((item) => {
       if (item.day === selected.day) {
         item.list.push(selected.time);
       }
       return item;
     });
-    // console.log(team._id);
-    // console.log(meeting);
     const teamSchedule = await Promise.all(team?.members?.map((member) => {
       const aux = member.schedule.find((item) => item.day === selected.day);
       if (aux) {
@@ -60,14 +57,10 @@ const Team = () => {
         aux.list.splice(index, 1);
       }
       return updateTeamSchedule({ id: member._id, schedule: member.schedule, dispatch });
-      // return member.schedule;
     }));
-    // console.log(teamSchedule);
     const result = await scheduleTeamMeeting({ teamId: team._id, meetings: meeting, dispatch });
     if (teamSchedule && result) {
-      console.log(teamSchedule);
-      console.log(result);
-      setSelected(null);
+      closeModal();
     }
   }
 
